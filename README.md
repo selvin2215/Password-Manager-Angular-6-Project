@@ -1,6 +1,11 @@
 # PasswordManager
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.0.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.0. For learning a complete angular 6 directive, pipes, component, etc.,. in web platform.
+
+## How it works
+1. Download zip file and extract.
+2. npm install
+3. npm serve
 
 ## Development server
 
