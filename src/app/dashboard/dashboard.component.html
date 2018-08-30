@@ -1,0 +1,31 @@
+<section class="iDashboard">
+	<pwd-page-title [title]="title"></pwd-page-title>
+	<div class="row">
+		<div class="col-md-3">
+			<div class="form-group">
+			    <label for="nickname">Nick name</label>
+			    <input type="text" class="form-control form-control-sm" id="nickname" placeholder="name" [(ngModel)]="nickName">
+			</div>
+		</div>
+		<div class="col-md-2">
+			<div class="form-group">
+			    <label for="socialType">Social Media</label>
+			    <input type="text" class="form-control form-control-sm" id="socialType" placeholder="Social Media" [(ngModel)]="socialType">
+			</div>
+		</div>
+		<div class="col-md-2">
+		</div>
+		<div class="col-md-5">
+			<div class="form-group">
+			    <label for="socialType">Search anything here</label>
+				<div class="input-group mb-3">
+				  <input type="text" class="form-control form-control-sm" placeholder="Search name, username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+				  <div class="input-group-append">
+				    <button class="btn btn-sm btn-outline-secondary" type="button">Search</button>
+				  </div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<pwd-list-password></pwd-list-password>
+</section>

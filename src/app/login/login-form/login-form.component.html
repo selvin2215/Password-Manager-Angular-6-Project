@@ -1,0 +1,34 @@
+<form [formGroup]="LoginForm" (ngSubmit)="LoginUser()">
+  <div class="alert alert-danger" role="alert" *ngIf="showError">
+    {{errMsg}}
+  </div>
+  <div class="form-group">
+    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email" formControlName="email" [class.is-invalid]="LoginForm.get('email').touched && LoginForm.get('email').invalid">
+    <div *ngIf="LoginForm.get('email').touched && LoginForm.get('email').invalid">
+      <small id="socialTypeHint" class="form-text text-danger" *ngIf="LoginForm.controls.email.hasError('required')">
+        Please enter your email address.
+      </small>
+      <small id="socialTypeHint" class="form-text text-danger" *ngIf="LoginForm.controls.email.hasError('email')">
+        Please enter the correct email address.
+      </small>
+    </div>
+  </div>
+  <div class="form-group">
+    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" formControlName="password" [class.is-invalid]="LoginForm.get('password').touched && LoginForm.get('password').invalid">
+    <div *ngIf="LoginForm.get('password').touched && LoginForm.get('password').invalid">
+      <small id="socialTypeHint" class="form-text text-danger" *ngIf="LoginForm.controls.password.hasError('required')">
+        Please enter your password.
+      </small>
+    </div>
+  </div>
+  <div class="text-center">
+  	<button type="submit" *ngIf="!loading" [disabled]="!LoginForm.valid" class="btn btn-sm btn-primary">Login</button>
+    <button class="btn btn-sm btn-primary btn-circle" *ngIf="loading">
+      <i class="fa fa-cog fa-spin"></i>
+    </button>
+  </div>
+  <div class="create-acc text-center">
+  	<p>Don't have an acount?</p>
+  	<p (click)="ToggleForms()">Create an account</p>
+  </div>
+</form>

@@ -1,0 +1,25 @@
+#login div.row{
+	padding-top: 80px;
+}
+
+.login {
+	background-color: white;
+	padding: 20px;
+    margin-right: 10px;
+    font-size: 14px;
+}
+.login h3 {
+	color: #7d8994;
+    font-size: 20px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+.pass-mngr {
+	padding: 0px 50px;
+}
+.pass-mngr h2{
+	color : #767676;
+}
+.pass-mngr p{
+	color : #919191;
+}

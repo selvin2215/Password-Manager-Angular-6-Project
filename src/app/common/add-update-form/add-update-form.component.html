@@ -1,0 +1,60 @@
+<form [formGroup]="PasswordForm" (ngSubmit)="SavePasswordForm()" id="password-form">
+  <input type="hidden" name="pwdId" id="pwdId" formControlName="pwdId">
+  <div class="form-group">
+    <label for="socialType">Social Media Type</label>
+    <select name="socialType" formControlName="socialType" class="form-control" [class.is-invalid]="PasswordForm.get('socialType').touched && PasswordForm.get('socialType').invalid">
+    	<option value=''>Select</option>
+    	<!-- <optgroup label="{{group.group}}" *ngFor="let group of socialTypeArr">
+	        <option [value]="subGroup.id" *ngFor="let subGroup of group.subGroup">
+		        <i [ngClass]="subGroup.icon"></i> {{subGroup.name}}
+		    </option>
+	    </optgroup> -->
+      <option [value]="group.id" *ngFor="let group of socialTypeArr">
+        <i [ngClass]="group.icon"></i> {{group.name}}
+      </option>
+    </select>
+    <small id="socialTypeHint" class="form-text" [ngClass]="GetSocialTypeClass()">Choose your related social media type.</small>
+  </div>
+  <div class="form-group">
+    <label for="nickName">Nick name</label>
+    <input type="text" class="form-control" id="nickName" formControlName="nickName" [class.is-invalid]="PasswordForm.get('nickName').touched && PasswordForm.get('nickName').invalid">
+    <div *ngIf="PasswordForm.get('nickName').touched && PasswordForm.get('nickName').invalid">
+    	<small id="socialTypeHint" class="form-text text-danger" *ngIf="PasswordForm.controls.nickName.hasError('required')">
+    		Please enter nick name
+    	</small>
+    	<small id="socialTypeHint" class="form-text text-danger" *ngIf="PasswordForm.controls.nickName.hasError('minlength')">
+    		Nick name should atleast of 5 characters
+    	</small>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="nickName">User name</label>
+    <input type="text" class="form-control" id="userName" formControlName="userName" [class.is-invalid]="PasswordForm.get('userName').touched && PasswordForm.get('userName').invalid">
+    <div *ngIf="PasswordForm.get('userName').touched && PasswordForm.get('userName').invalid">
+    	<small id="socialTypeHint" class="form-text text-danger" *ngIf="PasswordForm.controls.userName.hasError('required')">
+    		Please enter user name
+    	</small>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="nickName">Password</label>
+    <div class="input-group mb-3">
+      <input [type]="showPwd ? 'input' : 'password'" class="form-control" id="password" formControlName="password" [class.is-invalid]="PasswordForm.get('password').touched && PasswordForm.get('password').invalid" (keyup)="PasswordMeter()">
+      <div class="input-group-append">
+        <span class="input-group-text">
+          <i [ngClass]="showPwd ? 'fa fa-eye-slash' : 'fa fa-eye'" (click)="TogglePassword()"></i>
+        </span>
+        <span class="input-group-text {{selPwdMeter.class}}" *ngIf="PasswordForm.get('password').value.length > 0">
+          {{selPwdMeter.text}}
+        </span>
+      </div>
+      
+    </div>    
+    <small id="passwordHint" class="form-text" [ngClass]="GetPasswordClass()">Strong password must contains character length [6-20], atleast 1 uppercase, 1 number and 1 special character.</small>
+  </div>
+  <div class="form-group">
+    <label for="description">Description</label>
+    <textarea class="form-control" id="description" formControlName="description"></textarea>
+  </div>
+  <button type="submit" class="btn btn-success" [disabled]="!PasswordForm.valid">Submit</button>
+</form>
